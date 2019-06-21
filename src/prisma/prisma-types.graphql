@@ -1,5 +1,13 @@
 # source: http://localhost:4466
-# timestamp: Tue Jun 11 2019 17:51:26 GMT+0800 (GMT+08:00)
+# timestamp: Fri Jun 21 2019 15:34:22 GMT+0800 (GMT+08:00)
+
+type AggregateCard {
+  count: Int!
+}
+
+type AggregateMenu {
+  count: Int!
+}
 
 type AggregateUser {
   count: Int!
@@ -8,6 +16,598 @@ type AggregateUser {
 type BatchPayload {
   """The number of nodes that have been affected by the Batch operation."""
   count: Long!
+}
+
+type Card implements Node {
+  id: ID!
+  card_icon: String!
+  card_title: String!
+  card_description: String!
+  card_href: String!
+  menu: Menu!
+}
+
+"""A connection to a list of items."""
+type CardConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [CardEdge]!
+  aggregate: AggregateCard!
+}
+
+input CardCreateInput {
+  id: ID
+  card_icon: String!
+  card_title: String!
+  card_description: String!
+  card_href: String!
+  menu: MenuCreateOneWithoutCardInput!
+}
+
+input CardCreateManyWithoutMenuInput {
+  create: [CardCreateWithoutMenuInput!]
+  connect: [CardWhereUniqueInput!]
+}
+
+input CardCreateWithoutMenuInput {
+  id: ID
+  card_icon: String!
+  card_title: String!
+  card_description: String!
+  card_href: String!
+}
+
+"""An edge in a connection."""
+type CardEdge {
+  """The item at the end of the edge."""
+  node: Card!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum CardOrderByInput {
+  id_ASC
+  id_DESC
+  card_icon_ASC
+  card_icon_DESC
+  card_title_ASC
+  card_title_DESC
+  card_description_ASC
+  card_description_DESC
+  card_href_ASC
+  card_href_DESC
+}
+
+type CardPreviousValues {
+  id: ID!
+  card_icon: String!
+  card_title: String!
+  card_description: String!
+  card_href: String!
+}
+
+input CardScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [CardScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [CardScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [CardScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  card_icon: String
+
+  """All values that are not equal to given value."""
+  card_icon_not: String
+
+  """All values that are contained in given list."""
+  card_icon_in: [String!]
+
+  """All values that are not contained in given list."""
+  card_icon_not_in: [String!]
+
+  """All values less than the given value."""
+  card_icon_lt: String
+
+  """All values less than or equal the given value."""
+  card_icon_lte: String
+
+  """All values greater than the given value."""
+  card_icon_gt: String
+
+  """All values greater than or equal the given value."""
+  card_icon_gte: String
+
+  """All values containing the given string."""
+  card_icon_contains: String
+
+  """All values not containing the given string."""
+  card_icon_not_contains: String
+
+  """All values starting with the given string."""
+  card_icon_starts_with: String
+
+  """All values not starting with the given string."""
+  card_icon_not_starts_with: String
+
+  """All values ending with the given string."""
+  card_icon_ends_with: String
+
+  """All values not ending with the given string."""
+  card_icon_not_ends_with: String
+  card_title: String
+
+  """All values that are not equal to given value."""
+  card_title_not: String
+
+  """All values that are contained in given list."""
+  card_title_in: [String!]
+
+  """All values that are not contained in given list."""
+  card_title_not_in: [String!]
+
+  """All values less than the given value."""
+  card_title_lt: String
+
+  """All values less than or equal the given value."""
+  card_title_lte: String
+
+  """All values greater than the given value."""
+  card_title_gt: String
+
+  """All values greater than or equal the given value."""
+  card_title_gte: String
+
+  """All values containing the given string."""
+  card_title_contains: String
+
+  """All values not containing the given string."""
+  card_title_not_contains: String
+
+  """All values starting with the given string."""
+  card_title_starts_with: String
+
+  """All values not starting with the given string."""
+  card_title_not_starts_with: String
+
+  """All values ending with the given string."""
+  card_title_ends_with: String
+
+  """All values not ending with the given string."""
+  card_title_not_ends_with: String
+  card_description: String
+
+  """All values that are not equal to given value."""
+  card_description_not: String
+
+  """All values that are contained in given list."""
+  card_description_in: [String!]
+
+  """All values that are not contained in given list."""
+  card_description_not_in: [String!]
+
+  """All values less than the given value."""
+  card_description_lt: String
+
+  """All values less than or equal the given value."""
+  card_description_lte: String
+
+  """All values greater than the given value."""
+  card_description_gt: String
+
+  """All values greater than or equal the given value."""
+  card_description_gte: String
+
+  """All values containing the given string."""
+  card_description_contains: String
+
+  """All values not containing the given string."""
+  card_description_not_contains: String
+
+  """All values starting with the given string."""
+  card_description_starts_with: String
+
+  """All values not starting with the given string."""
+  card_description_not_starts_with: String
+
+  """All values ending with the given string."""
+  card_description_ends_with: String
+
+  """All values not ending with the given string."""
+  card_description_not_ends_with: String
+  card_href: String
+
+  """All values that are not equal to given value."""
+  card_href_not: String
+
+  """All values that are contained in given list."""
+  card_href_in: [String!]
+
+  """All values that are not contained in given list."""
+  card_href_not_in: [String!]
+
+  """All values less than the given value."""
+  card_href_lt: String
+
+  """All values less than or equal the given value."""
+  card_href_lte: String
+
+  """All values greater than the given value."""
+  card_href_gt: String
+
+  """All values greater than or equal the given value."""
+  card_href_gte: String
+
+  """All values containing the given string."""
+  card_href_contains: String
+
+  """All values not containing the given string."""
+  card_href_not_contains: String
+
+  """All values starting with the given string."""
+  card_href_starts_with: String
+
+  """All values not starting with the given string."""
+  card_href_not_starts_with: String
+
+  """All values ending with the given string."""
+  card_href_ends_with: String
+
+  """All values not ending with the given string."""
+  card_href_not_ends_with: String
+}
+
+type CardSubscriptionPayload {
+  mutation: MutationType!
+  node: Card
+  updatedFields: [String!]
+  previousValues: CardPreviousValues
+}
+
+input CardSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [CardSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [CardSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [CardSubscriptionWhereInput!]
+
+  """The subscription event gets dispatched when it's listed in mutation_in"""
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: CardWhereInput
+}
+
+input CardUpdateInput {
+  card_icon: String
+  card_title: String
+  card_description: String
+  card_href: String
+  menu: MenuUpdateOneRequiredWithoutCardInput
+}
+
+input CardUpdateManyDataInput {
+  card_icon: String
+  card_title: String
+  card_description: String
+  card_href: String
+}
+
+input CardUpdateManyMutationInput {
+  card_icon: String
+  card_title: String
+  card_description: String
+  card_href: String
+}
+
+input CardUpdateManyWithoutMenuInput {
+  create: [CardCreateWithoutMenuInput!]
+  connect: [CardWhereUniqueInput!]
+  set: [CardWhereUniqueInput!]
+  disconnect: [CardWhereUniqueInput!]
+  delete: [CardWhereUniqueInput!]
+  update: [CardUpdateWithWhereUniqueWithoutMenuInput!]
+  updateMany: [CardUpdateManyWithWhereNestedInput!]
+  deleteMany: [CardScalarWhereInput!]
+  upsert: [CardUpsertWithWhereUniqueWithoutMenuInput!]
+}
+
+input CardUpdateManyWithWhereNestedInput {
+  where: CardScalarWhereInput!
+  data: CardUpdateManyDataInput!
+}
+
+input CardUpdateWithoutMenuDataInput {
+  card_icon: String
+  card_title: String
+  card_description: String
+  card_href: String
+}
+
+input CardUpdateWithWhereUniqueWithoutMenuInput {
+  where: CardWhereUniqueInput!
+  data: CardUpdateWithoutMenuDataInput!
+}
+
+input CardUpsertWithWhereUniqueWithoutMenuInput {
+  where: CardWhereUniqueInput!
+  update: CardUpdateWithoutMenuDataInput!
+  create: CardCreateWithoutMenuInput!
+}
+
+input CardWhereInput {
+  """Logical AND on all given filters."""
+  AND: [CardWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [CardWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [CardWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  card_icon: String
+
+  """All values that are not equal to given value."""
+  card_icon_not: String
+
+  """All values that are contained in given list."""
+  card_icon_in: [String!]
+
+  """All values that are not contained in given list."""
+  card_icon_not_in: [String!]
+
+  """All values less than the given value."""
+  card_icon_lt: String
+
+  """All values less than or equal the given value."""
+  card_icon_lte: String
+
+  """All values greater than the given value."""
+  card_icon_gt: String
+
+  """All values greater than or equal the given value."""
+  card_icon_gte: String
+
+  """All values containing the given string."""
+  card_icon_contains: String
+
+  """All values not containing the given string."""
+  card_icon_not_contains: String
+
+  """All values starting with the given string."""
+  card_icon_starts_with: String
+
+  """All values not starting with the given string."""
+  card_icon_not_starts_with: String
+
+  """All values ending with the given string."""
+  card_icon_ends_with: String
+
+  """All values not ending with the given string."""
+  card_icon_not_ends_with: String
+  card_title: String
+
+  """All values that are not equal to given value."""
+  card_title_not: String
+
+  """All values that are contained in given list."""
+  card_title_in: [String!]
+
+  """All values that are not contained in given list."""
+  card_title_not_in: [String!]
+
+  """All values less than the given value."""
+  card_title_lt: String
+
+  """All values less than or equal the given value."""
+  card_title_lte: String
+
+  """All values greater than the given value."""
+  card_title_gt: String
+
+  """All values greater than or equal the given value."""
+  card_title_gte: String
+
+  """All values containing the given string."""
+  card_title_contains: String
+
+  """All values not containing the given string."""
+  card_title_not_contains: String
+
+  """All values starting with the given string."""
+  card_title_starts_with: String
+
+  """All values not starting with the given string."""
+  card_title_not_starts_with: String
+
+  """All values ending with the given string."""
+  card_title_ends_with: String
+
+  """All values not ending with the given string."""
+  card_title_not_ends_with: String
+  card_description: String
+
+  """All values that are not equal to given value."""
+  card_description_not: String
+
+  """All values that are contained in given list."""
+  card_description_in: [String!]
+
+  """All values that are not contained in given list."""
+  card_description_not_in: [String!]
+
+  """All values less than the given value."""
+  card_description_lt: String
+
+  """All values less than or equal the given value."""
+  card_description_lte: String
+
+  """All values greater than the given value."""
+  card_description_gt: String
+
+  """All values greater than or equal the given value."""
+  card_description_gte: String
+
+  """All values containing the given string."""
+  card_description_contains: String
+
+  """All values not containing the given string."""
+  card_description_not_contains: String
+
+  """All values starting with the given string."""
+  card_description_starts_with: String
+
+  """All values not starting with the given string."""
+  card_description_not_starts_with: String
+
+  """All values ending with the given string."""
+  card_description_ends_with: String
+
+  """All values not ending with the given string."""
+  card_description_not_ends_with: String
+  card_href: String
+
+  """All values that are not equal to given value."""
+  card_href_not: String
+
+  """All values that are contained in given list."""
+  card_href_in: [String!]
+
+  """All values that are not contained in given list."""
+  card_href_not_in: [String!]
+
+  """All values less than the given value."""
+  card_href_lt: String
+
+  """All values less than or equal the given value."""
+  card_href_lte: String
+
+  """All values greater than the given value."""
+  card_href_gt: String
+
+  """All values greater than or equal the given value."""
+  card_href_gte: String
+
+  """All values containing the given string."""
+  card_href_contains: String
+
+  """All values not containing the given string."""
+  card_href_not_contains: String
+
+  """All values starting with the given string."""
+  card_href_starts_with: String
+
+  """All values not starting with the given string."""
+  card_href_not_starts_with: String
+
+  """All values ending with the given string."""
+  card_href_ends_with: String
+
+  """All values not ending with the given string."""
+  card_href_not_ends_with: String
+  menu: MenuWhereInput
+}
+
+input CardWhereUniqueInput {
+  id: ID
 }
 
 """Raw JSON value"""
@@ -19,13 +619,287 @@ Long can represent values between -(2^63) and 2^63 - 1.
 """
 scalar Long
 
+type Menu implements Node {
+  id: ID!
+  menu_icon: String!
+  menu_name: String!
+  card(where: CardWhereInput, orderBy: CardOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Card!]
+}
+
+"""A connection to a list of items."""
+type MenuConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [MenuEdge]!
+  aggregate: AggregateMenu!
+}
+
+input MenuCreateInput {
+  id: ID
+  menu_icon: String!
+  menu_name: String!
+  card: CardCreateManyWithoutMenuInput
+}
+
+input MenuCreateOneWithoutCardInput {
+  create: MenuCreateWithoutCardInput
+  connect: MenuWhereUniqueInput
+}
+
+input MenuCreateWithoutCardInput {
+  id: ID
+  menu_icon: String!
+  menu_name: String!
+}
+
+"""An edge in a connection."""
+type MenuEdge {
+  """The item at the end of the edge."""
+  node: Menu!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum MenuOrderByInput {
+  id_ASC
+  id_DESC
+  menu_icon_ASC
+  menu_icon_DESC
+  menu_name_ASC
+  menu_name_DESC
+}
+
+type MenuPreviousValues {
+  id: ID!
+  menu_icon: String!
+  menu_name: String!
+}
+
+type MenuSubscriptionPayload {
+  mutation: MutationType!
+  node: Menu
+  updatedFields: [String!]
+  previousValues: MenuPreviousValues
+}
+
+input MenuSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [MenuSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [MenuSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [MenuSubscriptionWhereInput!]
+
+  """The subscription event gets dispatched when it's listed in mutation_in"""
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: MenuWhereInput
+}
+
+input MenuUpdateInput {
+  menu_icon: String
+  menu_name: String
+  card: CardUpdateManyWithoutMenuInput
+}
+
+input MenuUpdateManyMutationInput {
+  menu_icon: String
+  menu_name: String
+}
+
+input MenuUpdateOneRequiredWithoutCardInput {
+  create: MenuCreateWithoutCardInput
+  connect: MenuWhereUniqueInput
+  update: MenuUpdateWithoutCardDataInput
+  upsert: MenuUpsertWithoutCardInput
+}
+
+input MenuUpdateWithoutCardDataInput {
+  menu_icon: String
+  menu_name: String
+}
+
+input MenuUpsertWithoutCardInput {
+  update: MenuUpdateWithoutCardDataInput!
+  create: MenuCreateWithoutCardInput!
+}
+
+input MenuWhereInput {
+  """Logical AND on all given filters."""
+  AND: [MenuWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [MenuWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [MenuWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  menu_icon: String
+
+  """All values that are not equal to given value."""
+  menu_icon_not: String
+
+  """All values that are contained in given list."""
+  menu_icon_in: [String!]
+
+  """All values that are not contained in given list."""
+  menu_icon_not_in: [String!]
+
+  """All values less than the given value."""
+  menu_icon_lt: String
+
+  """All values less than or equal the given value."""
+  menu_icon_lte: String
+
+  """All values greater than the given value."""
+  menu_icon_gt: String
+
+  """All values greater than or equal the given value."""
+  menu_icon_gte: String
+
+  """All values containing the given string."""
+  menu_icon_contains: String
+
+  """All values not containing the given string."""
+  menu_icon_not_contains: String
+
+  """All values starting with the given string."""
+  menu_icon_starts_with: String
+
+  """All values not starting with the given string."""
+  menu_icon_not_starts_with: String
+
+  """All values ending with the given string."""
+  menu_icon_ends_with: String
+
+  """All values not ending with the given string."""
+  menu_icon_not_ends_with: String
+  menu_name: String
+
+  """All values that are not equal to given value."""
+  menu_name_not: String
+
+  """All values that are contained in given list."""
+  menu_name_in: [String!]
+
+  """All values that are not contained in given list."""
+  menu_name_not_in: [String!]
+
+  """All values less than the given value."""
+  menu_name_lt: String
+
+  """All values less than or equal the given value."""
+  menu_name_lte: String
+
+  """All values greater than the given value."""
+  menu_name_gt: String
+
+  """All values greater than or equal the given value."""
+  menu_name_gte: String
+
+  """All values containing the given string."""
+  menu_name_contains: String
+
+  """All values not containing the given string."""
+  menu_name_not_contains: String
+
+  """All values starting with the given string."""
+  menu_name_starts_with: String
+
+  """All values not starting with the given string."""
+  menu_name_not_starts_with: String
+
+  """All values ending with the given string."""
+  menu_name_ends_with: String
+
+  """All values not ending with the given string."""
+  menu_name_not_ends_with: String
+  card_every: CardWhereInput
+  card_some: CardWhereInput
+  card_none: CardWhereInput
+}
+
+input MenuWhereUniqueInput {
+  id: ID
+}
+
 type Mutation {
   createUser(data: UserCreateInput!): User!
+  createMenu(data: MenuCreateInput!): Menu!
+  createCard(data: CardCreateInput!): Card!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateMenu(data: MenuUpdateInput!, where: MenuWhereUniqueInput!): Menu
+  updateCard(data: CardUpdateInput!, where: CardWhereUniqueInput!): Card
   deleteUser(where: UserWhereUniqueInput!): User
+  deleteMenu(where: MenuWhereUniqueInput!): Menu
+  deleteCard(where: CardWhereUniqueInput!): Card
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  upsertMenu(where: MenuWhereUniqueInput!, create: MenuCreateInput!, update: MenuUpdateInput!): Menu!
+  upsertCard(where: CardWhereUniqueInput!, create: CardCreateInput!, update: CardUpdateInput!): Card!
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  updateManyMenus(data: MenuUpdateManyMutationInput!, where: MenuWhereInput): BatchPayload!
+  updateManyCards(data: CardUpdateManyMutationInput!, where: CardWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
+  deleteManyMenus(where: MenuWhereInput): BatchPayload!
+  deleteManyCards(where: CardWhereInput): BatchPayload!
   executeRaw(database: PrismaDatabase, query: String!): Json!
 }
 
@@ -62,8 +936,14 @@ enum PrismaDatabase {
 
 type Query {
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  menus(where: MenuWhereInput, orderBy: MenuOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Menu]!
+  cards(where: CardWhereInput, orderBy: CardOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Card]!
   user(where: UserWhereUniqueInput!): User
+  menu(where: MenuWhereUniqueInput!): Menu
+  card(where: CardWhereUniqueInput!): Card
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  menusConnection(where: MenuWhereInput, orderBy: MenuOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): MenuConnection!
+  cardsConnection(where: CardWhereInput, orderBy: CardOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CardConnection!
 
   """Fetches an object given its ID"""
   node(
@@ -74,6 +954,8 @@ type Query {
 
 type Subscription {
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+  menu(where: MenuSubscriptionWhereInput): MenuSubscriptionPayload
+  card(where: CardSubscriptionWhereInput): CardSubscriptionPayload
 }
 
 type User implements Node {

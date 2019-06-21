@@ -7,6 +7,6 @@ type User implements Node {
 	name: String!
 }
 
-type Query {
-	users: [User]
-}
+# type Query {
+	# users: [User]
+# }
