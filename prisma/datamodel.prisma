@@ -2,3 +2,19 @@ type User {
   id: ID! @id
   name: String!
 }
+
+type Menu {
+  id: ID! @id
+  menu_icon: String!
+  menu_name: String!
+  card: [Card!]!
+}
+
+type Card {
+  id: ID! @id
+  card_icon: String!
+  card_title: String!
+  card_description: String!
+  card_href: String!
+  menu: Menu!
+}
