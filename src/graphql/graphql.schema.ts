@@ -596,8 +596,6 @@ export abstract class IMutation {
     abstract deleteManyCards(where?: CardWhereInput): BatchPayload | Promise<BatchPayload>;
 
     abstract executeRaw(database?: PrismaDatabase, query: string): Json | Promise<Json>;
-
-    abstract a(): string | Promise<string>;
 }
 
 export class PageInfo {
