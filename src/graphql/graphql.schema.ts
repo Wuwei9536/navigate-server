@@ -291,11 +291,6 @@ export class CardWhereUniqueInput {
     id?: string;
 }
 
-export class CreateMenuInput {
-    menu_icon: string;
-    menu_name: string;
-}
-
 export class MenuCreateInput {
     id?: string;
     menu_icon: string;
@@ -601,6 +596,8 @@ export abstract class IMutation {
     abstract deleteManyCards(where?: CardWhereInput): BatchPayload | Promise<BatchPayload>;
 
     abstract executeRaw(database?: PrismaDatabase, query: string): Json | Promise<Json>;
+
+    abstract a(): string | Promise<string>;
 }
 
 export class PageInfo {
@@ -631,7 +628,7 @@ export abstract class IQuery {
 
     abstract node(id: string): Node | Promise<Node>;
 
-    abstract CardDatas(): CardData[] | Promise<CardData[]>;
+    abstract cardDatas(): CardData[] | Promise<CardData[]>;
 }
 
 export abstract class ISubscription {

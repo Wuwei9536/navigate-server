@@ -10,7 +10,7 @@ import { join } from 'path';
 @Module({
   imports: [
     GraphQLModule.forRoot({
-      typePaths: ['src/**/*.graphql'],
+      typePaths: ['src/**/*.graphql', 'src/graphql/**/*.graphql'],
       definitions: {
         path: join(process.cwd(), 'src/graphql/graphql.schema.ts'),
         outputAs: 'class',

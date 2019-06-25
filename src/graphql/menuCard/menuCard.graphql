@@ -1,18 +1,3 @@
-type Menu {
-	id: ID!
-	menu_icon: String!
-	menu_name: String!
-}
-
-type Card {
-	id: ID!
-	card_icon: String!
-	card_title: String!
-	card_description: String!
-	card_href: String!
-	menu: Menu!
-}
-
 type CardData {
 	id: ID!
 	menu_icon: String!
@@ -21,14 +6,9 @@ type CardData {
 }
 
 type Query {
-	CardDatas: [CardData]!
+	cardDatas: [CardData]!
 }
 
-type Mutation {
-	createMenu(createMenuInput: CreateMenuInput!): Menu!
-}
-
-input CreateMenuInput {
-	menu_icon: String!
-	menu_name: String!
-}
+# type Mutation{
+# 	a:String
+# }
