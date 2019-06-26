@@ -900,7 +900,7 @@ type Mutation {
   deleteManyUsers(where: UserWhereInput): BatchPayload!
   deleteManyMenus(where: MenuWhereInput): BatchPayload!
   deleteManyCards(where: CardWhereInput): BatchPayload!
-  executeRaw(database: PrismaDatabase, query: String!): Json!
+  executeRaw(query: String!, database: PrismaDatabase): Json!
 }
 
 enum MutationType {
