@@ -96,6 +96,8 @@ type Card implements Node {
   card_description: String!
   card_href: String!
   menu: Menu!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 """A connection to a list of items."""
@@ -150,6 +152,10 @@ enum CardOrderByInput {
   card_description_DESC
   card_href_ASC
   card_href_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 type CardPreviousValues {
@@ -158,6 +164,8 @@ type CardPreviousValues {
   card_title: String!
   card_description: String!
   card_href: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 input CardScalarWhereInput {
@@ -369,6 +377,50 @@ input CardScalarWhereInput {
 
   """All values not ending with the given string."""
   card_href_not_ends_with: String
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
 }
 
 type CardSubscriptionPayload {
@@ -674,12 +726,59 @@ input CardWhereInput {
 
   """All values not ending with the given string."""
   card_href_not_ends_with: String
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
   menu: MenuWhereInput
 }
 
 input CardWhereUniqueInput {
   id: ID
+  card_title: String
 }
+
+scalar DateTime
 
 """Raw JSON value"""
 scalar Json
@@ -695,6 +794,8 @@ type Menu implements Node {
   menu_icon: String!
   menu_name: String!
   card(where: CardWhereInput, orderBy: CardOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Card!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 """A connection to a list of items."""
@@ -741,12 +842,18 @@ enum MenuOrderByInput {
   menu_icon_DESC
   menu_name_ASC
   menu_name_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 type MenuPreviousValues {
   id: ID!
   menu_icon: String!
   menu_name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type MenuSubscriptionPayload {
@@ -943,6 +1050,50 @@ input MenuWhereInput {
 
   """All values not ending with the given string."""
   menu_name_not_ends_with: String
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
   card_every: CardWhereInput
   card_some: CardWhereInput
   card_none: CardWhereInput
@@ -950,6 +1101,7 @@ input MenuWhereInput {
 
 input MenuWhereUniqueInput {
   id: ID
+  menu_name: String
 }
 
 type Mutation {
@@ -1208,6 +1360,7 @@ input UserWhereInput {
 
 input UserWhereUniqueInput {
   id: ID
+  name: String
 }
 `
 
@@ -1226,14 +1379,22 @@ export type CardOrderByInput =   'id_ASC' |
   'card_description_ASC' |
   'card_description_DESC' |
   'card_href_ASC' |
-  'card_href_DESC'
+  'card_href_DESC' |
+  'createdAt_ASC' |
+  'createdAt_DESC' |
+  'updatedAt_ASC' |
+  'updatedAt_DESC'
 
 export type MenuOrderByInput =   'id_ASC' |
   'id_DESC' |
   'menu_icon_ASC' |
   'menu_icon_DESC' |
   'menu_name_ASC' |
-  'menu_name_DESC'
+  'menu_name_DESC' |
+  'createdAt_ASC' |
+  'createdAt_DESC' |
+  'updatedAt_ASC' |
+  'updatedAt_DESC'
 
 export type MutationType =   'CREATED' |
   'UPDATED' |
@@ -1342,6 +1503,22 @@ export interface CardScalarWhereInput {
   card_href_not_starts_with?: String | null
   card_href_ends_with?: String | null
   card_href_not_ends_with?: String | null
+  createdAt?: DateTime | null
+  createdAt_not?: DateTime | null
+  createdAt_in?: DateTime[] | DateTime | null
+  createdAt_not_in?: DateTime[] | DateTime | null
+  createdAt_lt?: DateTime | null
+  createdAt_lte?: DateTime | null
+  createdAt_gt?: DateTime | null
+  createdAt_gte?: DateTime | null
+  updatedAt?: DateTime | null
+  updatedAt_not?: DateTime | null
+  updatedAt_in?: DateTime[] | DateTime | null
+  updatedAt_not_in?: DateTime[] | DateTime | null
+  updatedAt_lt?: DateTime | null
+  updatedAt_lte?: DateTime | null
+  updatedAt_gt?: DateTime | null
+  updatedAt_gte?: DateTime | null
 }
 
 export interface CardSubscriptionWhereInput {
@@ -1486,11 +1663,28 @@ export interface CardWhereInput {
   card_href_not_starts_with?: String | null
   card_href_ends_with?: String | null
   card_href_not_ends_with?: String | null
+  createdAt?: DateTime | null
+  createdAt_not?: DateTime | null
+  createdAt_in?: DateTime[] | DateTime | null
+  createdAt_not_in?: DateTime[] | DateTime | null
+  createdAt_lt?: DateTime | null
+  createdAt_lte?: DateTime | null
+  createdAt_gt?: DateTime | null
+  createdAt_gte?: DateTime | null
+  updatedAt?: DateTime | null
+  updatedAt_not?: DateTime | null
+  updatedAt_in?: DateTime[] | DateTime | null
+  updatedAt_not_in?: DateTime[] | DateTime | null
+  updatedAt_lt?: DateTime | null
+  updatedAt_lte?: DateTime | null
+  updatedAt_gt?: DateTime | null
+  updatedAt_gte?: DateTime | null
   menu?: MenuWhereInput | null
 }
 
 export interface CardWhereUniqueInput {
   id?: ID_Input | null
+  card_title?: String | null
 }
 
 export interface MenuCreateInput {
@@ -1596,6 +1790,22 @@ export interface MenuWhereInput {
   menu_name_not_starts_with?: String | null
   menu_name_ends_with?: String | null
   menu_name_not_ends_with?: String | null
+  createdAt?: DateTime | null
+  createdAt_not?: DateTime | null
+  createdAt_in?: DateTime[] | DateTime | null
+  createdAt_not_in?: DateTime[] | DateTime | null
+  createdAt_lt?: DateTime | null
+  createdAt_lte?: DateTime | null
+  createdAt_gt?: DateTime | null
+  createdAt_gte?: DateTime | null
+  updatedAt?: DateTime | null
+  updatedAt_not?: DateTime | null
+  updatedAt_in?: DateTime[] | DateTime | null
+  updatedAt_not_in?: DateTime[] | DateTime | null
+  updatedAt_lt?: DateTime | null
+  updatedAt_lte?: DateTime | null
+  updatedAt_gt?: DateTime | null
+  updatedAt_gte?: DateTime | null
   card_every?: CardWhereInput | null
   card_some?: CardWhereInput | null
   card_none?: CardWhereInput | null
@@ -1603,6 +1813,7 @@ export interface MenuWhereInput {
 
 export interface MenuWhereUniqueInput {
   id?: ID_Input | null
+  menu_name?: String | null
 }
 
 export interface UserCreateInput {
@@ -1665,6 +1876,7 @@ export interface UserWhereInput {
 
 export interface UserWhereUniqueInput {
   id?: ID_Input | null
+  name?: String | null
 }
 
 /*
@@ -1698,6 +1910,8 @@ export interface Card extends Node {
   card_description: String
   card_href: String
   menu: Menu
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
 /*
@@ -1725,6 +1939,8 @@ export interface CardPreviousValues {
   card_title: String
   card_description: String
   card_href: String
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
 export interface CardSubscriptionPayload {
@@ -1739,6 +1955,8 @@ export interface Menu extends Node {
   menu_icon: String
   menu_name: String
   card?: Array<Card> | null
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
 /*
@@ -1764,6 +1982,8 @@ export interface MenuPreviousValues {
   id: ID_Output
   menu_icon: String
   menu_name: String
+  createdAt: DateTime
+  updatedAt: DateTime
 }
 
 export interface MenuSubscriptionPayload {
@@ -1824,6 +2044,8 @@ export interface UserSubscriptionPayload {
 The `Boolean` scalar type represents `true` or `false`.
 */
 export type Boolean = boolean
+
+export type DateTime = Date | string
 
 /*
 The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.

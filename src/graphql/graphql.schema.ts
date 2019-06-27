@@ -15,7 +15,11 @@ export enum CardOrderByInput {
     card_description_ASC = "card_description_ASC",
     card_description_DESC = "card_description_DESC",
     card_href_ASC = "card_href_ASC",
-    card_href_DESC = "card_href_DESC"
+    card_href_DESC = "card_href_DESC",
+    createdAt_ASC = "createdAt_ASC",
+    createdAt_DESC = "createdAt_DESC",
+    updatedAt_ASC = "updatedAt_ASC",
+    updatedAt_DESC = "updatedAt_DESC"
 }
 
 export enum MenuOrderByInput {
@@ -24,7 +28,11 @@ export enum MenuOrderByInput {
     menu_icon_ASC = "menu_icon_ASC",
     menu_icon_DESC = "menu_icon_DESC",
     menu_name_ASC = "menu_name_ASC",
-    menu_name_DESC = "menu_name_DESC"
+    menu_name_DESC = "menu_name_DESC",
+    createdAt_ASC = "createdAt_ASC",
+    createdAt_DESC = "createdAt_DESC",
+    updatedAt_ASC = "updatedAt_ASC",
+    updatedAt_DESC = "updatedAt_DESC"
 }
 
 export enum MutationType {
@@ -140,6 +148,22 @@ export class CardScalarWhereInput {
     card_href_not_starts_with?: string;
     card_href_ends_with?: string;
     card_href_not_ends_with?: string;
+    createdAt?: DateTime;
+    createdAt_not?: DateTime;
+    createdAt_in?: DateTime[];
+    createdAt_not_in?: DateTime[];
+    createdAt_lt?: DateTime;
+    createdAt_lte?: DateTime;
+    createdAt_gt?: DateTime;
+    createdAt_gte?: DateTime;
+    updatedAt?: DateTime;
+    updatedAt_not?: DateTime;
+    updatedAt_in?: DateTime[];
+    updatedAt_not_in?: DateTime[];
+    updatedAt_lt?: DateTime;
+    updatedAt_lte?: DateTime;
+    updatedAt_gt?: DateTime;
+    updatedAt_gte?: DateTime;
 }
 
 export class CardSubscriptionWhereInput {
@@ -284,11 +308,28 @@ export class CardWhereInput {
     card_href_not_starts_with?: string;
     card_href_ends_with?: string;
     card_href_not_ends_with?: string;
+    createdAt?: DateTime;
+    createdAt_not?: DateTime;
+    createdAt_in?: DateTime[];
+    createdAt_not_in?: DateTime[];
+    createdAt_lt?: DateTime;
+    createdAt_lte?: DateTime;
+    createdAt_gt?: DateTime;
+    createdAt_gte?: DateTime;
+    updatedAt?: DateTime;
+    updatedAt_not?: DateTime;
+    updatedAt_in?: DateTime[];
+    updatedAt_not_in?: DateTime[];
+    updatedAt_lt?: DateTime;
+    updatedAt_lte?: DateTime;
+    updatedAt_gt?: DateTime;
+    updatedAt_gte?: DateTime;
     menu?: MenuWhereInput;
 }
 
 export class CardWhereUniqueInput {
     id?: string;
+    card_title?: string;
 }
 
 export class MenuCreateInput {
@@ -394,6 +435,22 @@ export class MenuWhereInput {
     menu_name_not_starts_with?: string;
     menu_name_ends_with?: string;
     menu_name_not_ends_with?: string;
+    createdAt?: DateTime;
+    createdAt_not?: DateTime;
+    createdAt_in?: DateTime[];
+    createdAt_not_in?: DateTime[];
+    createdAt_lt?: DateTime;
+    createdAt_lte?: DateTime;
+    createdAt_gt?: DateTime;
+    createdAt_gte?: DateTime;
+    updatedAt?: DateTime;
+    updatedAt_not?: DateTime;
+    updatedAt_in?: DateTime[];
+    updatedAt_not_in?: DateTime[];
+    updatedAt_lt?: DateTime;
+    updatedAt_lte?: DateTime;
+    updatedAt_gt?: DateTime;
+    updatedAt_gte?: DateTime;
     card_every?: CardWhereInput;
     card_some?: CardWhereInput;
     card_none?: CardWhereInput;
@@ -401,6 +458,7 @@ export class MenuWhereInput {
 
 export class MenuWhereUniqueInput {
     id?: string;
+    menu_name?: string;
 }
 
 export class UserCreateInput {
@@ -463,6 +521,7 @@ export class UserWhereInput {
 
 export class UserWhereUniqueInput {
     id?: string;
+    name?: string;
 }
 
 export interface Node {
@@ -492,6 +551,8 @@ export class Card implements Node {
     card_description: string;
     card_href: string;
     menu: Menu;
+    createdAt: DateTime;
+    updatedAt: DateTime;
 }
 
 export class CardConnection {
@@ -518,6 +579,8 @@ export class CardPreviousValues {
     card_title: string;
     card_description: string;
     card_href: string;
+    createdAt: DateTime;
+    updatedAt: DateTime;
 }
 
 export class CardSubscriptionPayload {
@@ -532,6 +595,8 @@ export class Menu implements Node {
     menu_icon: string;
     menu_name: string;
     card?: Card[];
+    createdAt: DateTime;
+    updatedAt: DateTime;
 }
 
 export class MenuConnection {
@@ -549,6 +614,8 @@ export class MenuPreviousValues {
     id: string;
     menu_icon: string;
     menu_name: string;
+    createdAt: DateTime;
+    updatedAt: DateTime;
 }
 
 export class MenuSubscriptionPayload {
@@ -665,5 +732,6 @@ export class UserSubscriptionPayload {
     previousValues?: UserPreviousValues;
 }
 
+export type DateTime = any;
 export type Json = any;
 export type Long = any;

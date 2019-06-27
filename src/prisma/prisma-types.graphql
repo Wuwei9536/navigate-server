@@ -1,5 +1,5 @@
 # source: http://localhost:4466
-# timestamp: Fri Jun 21 2019 15:34:22 GMT+0800 (GMT+08:00)
+# timestamp: Thu Jun 27 2019 18:19:14 GMT+0800 (GMT+08:00)
 
 type AggregateCard {
   count: Int!
@@ -25,6 +25,8 @@ type Card implements Node {
   card_description: String!
   card_href: String!
   menu: Menu!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 """A connection to a list of items."""
@@ -79,6 +81,10 @@ enum CardOrderByInput {
   card_description_DESC
   card_href_ASC
   card_href_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 type CardPreviousValues {
@@ -87,6 +93,8 @@ type CardPreviousValues {
   card_title: String!
   card_description: String!
   card_href: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 input CardScalarWhereInput {
@@ -298,6 +306,50 @@ input CardScalarWhereInput {
 
   """All values not ending with the given string."""
   card_href_not_ends_with: String
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
 }
 
 type CardSubscriptionPayload {
@@ -603,12 +655,59 @@ input CardWhereInput {
 
   """All values not ending with the given string."""
   card_href_not_ends_with: String
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
   menu: MenuWhereInput
 }
 
 input CardWhereUniqueInput {
   id: ID
+  card_title: String
 }
+
+scalar DateTime
 
 """Raw JSON value"""
 scalar Json
@@ -624,6 +723,8 @@ type Menu implements Node {
   menu_icon: String!
   menu_name: String!
   card(where: CardWhereInput, orderBy: CardOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Card!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 """A connection to a list of items."""
@@ -670,12 +771,18 @@ enum MenuOrderByInput {
   menu_icon_DESC
   menu_name_ASC
   menu_name_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 type MenuPreviousValues {
   id: ID!
   menu_icon: String!
   menu_name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type MenuSubscriptionPayload {
@@ -872,6 +979,50 @@ input MenuWhereInput {
 
   """All values not ending with the given string."""
   menu_name_not_ends_with: String
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
   card_every: CardWhereInput
   card_some: CardWhereInput
   card_none: CardWhereInput
@@ -879,6 +1030,7 @@ input MenuWhereInput {
 
 input MenuWhereUniqueInput {
   id: ID
+  menu_name: String
 }
 
 type Mutation {
@@ -1137,4 +1289,5 @@ input UserWhereInput {
 
 input UserWhereUniqueInput {
   id: ID
+  name: String
 }

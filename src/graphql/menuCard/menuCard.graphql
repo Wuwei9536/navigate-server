@@ -6,6 +6,9 @@ type CardData {
 }
 
 type Query {
+	"""
+    获取menu列表和所有卡片
+	"""
 	cardDatas: [CardData]!
 }
 

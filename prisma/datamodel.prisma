@@ -1,20 +1,25 @@
 type User {
   id: ID! @id
-  name: String!
+  name: String! @unique
 }
 
 type Menu {
   id: ID! @id
   menu_icon: String!
-  menu_name: String!
+  menu_name: String! @unique
   card: [Card!]!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+
 }
 
 type Card {
   id: ID! @id
   card_icon: String!
-  card_title: String!
+  card_title: String! @unique
   card_description: String!
   card_href: String!
   menu: Menu!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
