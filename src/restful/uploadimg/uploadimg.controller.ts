@@ -10,7 +10,7 @@ const multer = require('multer');
 const storage = multer.diskStorage({
   destination: 'img/',
   filename: (req, file, cb) => {
-    cb(null, file.fieldname + '-' + Date.now() + '.jpg');
+    cb(null, file.originalname);
   },
 });
 
@@ -19,6 +19,6 @@ export class UploadimgController {
   @Post()
   @UseInterceptors(FileInterceptor('img', { storage }))
   uploadFile(@UploadedFile() file) {
-    console.log(file);
+    // console.log(file);
   }
 }
