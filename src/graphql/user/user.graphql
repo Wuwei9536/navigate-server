@@ -11,7 +11,7 @@ type User implements Node {
 	# users: [User]
 # }
 
-type Mutation{
-	a:String
-}
+# type Mutation{
+# 	a:String
+# }
 
