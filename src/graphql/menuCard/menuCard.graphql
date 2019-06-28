@@ -11,7 +11,3 @@ type Query {
 	"""
 	cardDatas: [CardData]!
 }
-
-# type Mutation{
-# 	a:String
-# }

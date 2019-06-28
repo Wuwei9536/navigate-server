@@ -663,6 +663,8 @@ export abstract class IMutation {
     abstract deleteManyCards(where?: CardWhereInput): BatchPayload | Promise<BatchPayload>;
 
     abstract executeRaw(query: string, database?: PrismaDatabase): Json | Promise<Json>;
+
+    abstract a(): string | Promise<string>;
 }
 
 export class PageInfo {

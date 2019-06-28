@@ -10,3 +10,8 @@ type User implements Node {
 # type Query {
 	# users: [User]
 # }
+
+type Mutation{
+	a:String
+}
+
