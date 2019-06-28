@@ -4,8 +4,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PrismaService } from './prisma/prisma.service';
 import { PrismaModule } from './prisma/prisma.module';
-import Graphql from './graphql';
 import { join } from 'path';
+import { UploadimgModule } from './restful/uploadimg/uploadimg.module';
+import Graphql from './graphql';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { join } from 'path';
     }),
     PrismaModule,
     Graphql,
+    UploadimgModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
