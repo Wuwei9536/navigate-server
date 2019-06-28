@@ -27,3 +27,7 @@ $ npm run start:debug
 # production mode
 $ npm run start:prod
 ```
+
+## Statement
+
+仅作学习使用,练手项目
